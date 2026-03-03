@@ -23,10 +23,10 @@ class TaskController extends Controller
         $task = Task::create($request->validated());
         return response()->json($task, 201);
     }
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, $id)
     {
         $task = Task::find($id);
-        $task->update($request->all());
+        $task->update($request->validated());
         return response()->json($task, 200);
     }
     public function destroy($id)

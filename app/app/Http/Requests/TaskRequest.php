@@ -21,6 +21,14 @@ class TaskRequest extends FormRequest
      */
     public function rules(): array
     {
+        if($this->method() == 'PUT') {
+            return [
+                'title' => 'sometimes|min:2',
+                'description' => 'sometimes|min:10',
+                'status' => 'sometimes',
+            ];
+        }
+
         return [
                 'title' => 'required|min:2',
                 'description' => 'required|min:10',
